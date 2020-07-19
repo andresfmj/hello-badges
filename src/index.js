@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import 'bootstrap/dist/css/bootstrap.css'
+import './global.css'
+import Badge from './components/Badge'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const element = (
+  <div>
+    <h1>Hola, soy Fernando</h1>
+    <p>Soy Ingeniero de Software</p>
+  </div>
+)
+const container = document.getElementById('root')
+
+ReactDOM.render(<Badge />, container)
