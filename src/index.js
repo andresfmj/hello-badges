@@ -13,4 +13,10 @@ const element = (
 )
 const container = document.getElementById('root')
 
-ReactDOM.render(<Badge />, container)
+ReactDOM.render(<Badge 
+  firstName="Andres" 
+  lastName="Fernando" 
+  jobTitle="Frontend Engineer"
+  twitter="andresf_mj"
+  avatarUrl="https://www.gravatar.com/avatar?d=identicon"
+   />, container)
