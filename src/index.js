@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import './global.css'
 import Badge from './components/Badge'
+import BadgeNew from './pages/BadgeNew'
 
 const element = (
   <div>
@@ -13,10 +14,11 @@ const element = (
 )
 const container = document.getElementById('root')
 
-ReactDOM.render(<Badge 
-  firstName="Andres" 
-  lastName="Fernando" 
-  jobTitle="Frontend Engineer"
-  twitter="andresf_mj"
-  avatarUrl="https://www.gravatar.com/avatar?d=identicon"
-   />, container)
+// ReactDOM.render(<Badge 
+//   firstName="Andres" 
+//   lastName="Fernando" 
+//   jobTitle="Frontend Engineer"
+//   twitter="andresf_mj"
+//   avatarUrl="https://www.gravatar.com/avatar?d=identicon"
+//    />, container)
+ReactDOM.render(<BadgeNew />, container)
