@@ -38,6 +38,24 @@
   height: 120px;
 }
 
+.Badge__profile_placeholder {
+  border: 1px solid #000;
+  background-color: #000;
+  border-radius: 50%;
+  width: 7.5rem;
+  height: 7.5rem;
+  padding: 1.8rem;
+  margin: 0 1rem;
+}
+.Badge__profile_placeholder p {
+  margin: 0;
+  padding: 0;
+  color: #ccc;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+
 .Badge__footer {
   height: 54px;
   display: flex;
