@@ -7,6 +7,25 @@ import Navbar from '../components/Navbar'
 import Badge from '../components/Badge'
 
 class BadgeNew extends React.Component {
+    state = {
+        form: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            jobTitle: '',
+            twitter: '',
+            avatarUrl: ''
+        }
+    }
+
+    handleChange = e => {
+        this.setState({
+            form: {
+                ...this.state.form, // Con operador Spread
+                [e.target.name]: e.target.value
+            }
+        })
+    }
 
     render() {
         return (
@@ -20,13 +39,13 @@ class BadgeNew extends React.Component {
                     <div className="row">
                         <div className="col-6">
                             <Badge 
-                                firstName="Andres" lastName="Fernando" 
-                                twitter="andresf_mj" jobTitle="Frontend Engineer" 
-                                avatarUrl="https://www.gravatar.com/avatar?d=identicon" 
+                                firstName={this.state.form.firstName} lastName={this.state.form.lastName} 
+                                email={this.state.form.email} twitter={this.state.form.twitter} jobTitle={this.state.form.jobTitle} 
+                                avatarUrl={this.state.form.avatarUrl} 
                             />
                         </div>
                         <div className="col-6">
-                            <BadgeForm />
+                            <BadgeForm onChange={this.handleChange} formValues={this.state.form} />
                         </div>
                     </div>
                 </div>
