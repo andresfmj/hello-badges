@@ -1,4 +1,8 @@
 .Badges__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   width: 100%;
   padding: 2rem 0;
   background: url('../../images/stars.svg'), #1B1B25;
@@ -27,4 +31,13 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1rem;
+}
+
+.Badges__search {
+  width: 50% !important;
+}
+
+.Badges__hero form {
+  width: 100%;
+  justify-content: center;
 }

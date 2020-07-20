@@ -78,9 +78,19 @@ class Badges extends React.Component {
             <React.Fragment>
                 <div className='Badges'>
                     <div className="Badges__hero">
-                        <div className="Badges__container">
-                            <img className='Badges_conf-logo' src={header} alt="Logo" />
-                        </div>
+                        <img className='Badges_conf-logo' src={header} alt="Logo" />
+                        <form className='form-inline'>
+                            <label className='sr-only'> Search</label>
+                            <div className="input-group mb-2 mr-sm-2 Badges__search">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text">@</div>
+                                </div>
+                                <input type="text" className='form-control' placeholder='Search for badges...' name="search" />
+                                <div className="input-group-append">
+                                    <button className='btn btn-info' type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
