@@ -3,6 +3,7 @@ import React from 'react'
 import './styles/BadgesList.css'
 import { Link } from 'react-router-dom'
 
+import BadgesListItem from '../components/BadgeListItem'
 
 class BadgesList extends React.Component {
 
@@ -20,21 +21,9 @@ class BadgesList extends React.Component {
                 <ul className="list-unstyled">
                     {this.props.badges.map((badge) => (
                         <li key={badge.id} className='BadgesListItem'>
-                            <div>
-                                <img className="BadgesListItem__avatar" src={badge.avatarUrl} alt={badge.twitter} />
-                            </div>
-                            <div className='font-weight-bold'>
-                                <div>{badge.firstName} {badge.lastName}</div>
-                                <div className='Twitter__name'>
-                                    <ul>
-                                        <li><span className='Twitter__logo'></span></li>
-                                        <li>
-                                            <a href={`https://twitter.com/${badge.twitter}`}>@{badge.twitter}</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className='font-weight-light'>{badge.jobTitle}</div>
-                            </div>
+                            <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                                <BadgesListItem badge={badge} />
+                            </Link>
                         </li>
                     ))}
                 </ul>
