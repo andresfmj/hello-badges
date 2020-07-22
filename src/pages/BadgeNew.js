@@ -9,6 +9,7 @@ import PageLoading from '../components/PageLoading'
 import PageError from '../components/PageError'
 
 import api from '../api'
+import md5 from 'md5'
 
 class BadgeNew extends React.Component {
     state = {
@@ -32,8 +33,12 @@ class BadgeNew extends React.Component {
         this.setState({ loading: true, error: null })
 
         try {
-            await api.badges.create(this.state.form)
+            await api.badges.create({
+                ...this.state.form,
+                avatarUrl: `https://www.gravatar.com/avatar/${md5(this.state.form.email)}?d=identicon`
+            })
             this.setState({ loading: false })
+            this.props.history.push('/badges')
         } catch(error) {
             console.log(error.message)
             this.setState({ loading: false, error: error })
@@ -41,7 +46,7 @@ class BadgeNew extends React.Component {
     }
 
     handleChange = e => {
-        this.setState({
+        this.setState({ 
             form: {
                 ...this.state.form, // Con operador Spread
                 [e.target.name]: e.target.value
@@ -52,12 +57,20 @@ class BadgeNew extends React.Component {
     render() {
         let badgeForm = <PageLoading />
         if (!this.state.loading) {
-            if (this.state.error) {
-                badgeForm = <PageError error={this.state.error.message} />
-            }
             badgeForm = (
-                <div className="col-6">
-                    <BadgeForm onSubmit={this.handleSubmit} onChange={this.handleChange} formValues={this.state.form} />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-6">
+                            <Badge 
+                                firstName={this.state.form.firstName} lastName={this.state.form.lastName} 
+                                email={this.state.form.email} twitter={this.state.form.twitter} jobTitle={this.state.form.jobTitle} 
+                                avatarUrl={this.state.form.avatarUrl} 
+                            />
+                        </div>
+                        <div className="col-6">
+                            <BadgeForm onSubmit={this.handleSubmit} onChange={this.handleChange} formValues={this.state.form} error={this.state.error} />
+                        </div>
+                    </div>
                 </div>
             )
         }
@@ -68,18 +81,7 @@ class BadgeNew extends React.Component {
                     <img className="BadgeNew__hero-image img-fluid" src={header} alt="Logo" />
                 </div>
 
-                <div className="container">
-                    <div className="row">
-                        <div className="col-6">
-                            <Badge 
-                                firstName={this.state.form.firstName} lastName={this.state.form.lastName} 
-                                email={this.state.form.email} twitter={this.state.form.twitter} jobTitle={this.state.form.jobTitle} 
-                                avatarUrl={this.state.form.avatarUrl} 
-                            />
-                        </div>
-                        {badgeForm}
-                    </div>
-                </div>
+                {badgeForm}
             </React.Fragment>
         )
     }
