@@ -29,7 +29,7 @@ class BadgeForm extends React.Component {
         return (
             <div>
                 <h1>New Attendant</h1>
-                <form>
+                <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
                         <input onChange={this.props.onChange} type="text" name="firstName" value={this.props.formValues.firstName} className="form-control" />
@@ -50,11 +50,11 @@ class BadgeForm extends React.Component {
                         <label>Twitter</label>
                         <input onChange={this.props.onChange} type="text" name="twitter" value={this.props.formValues.twitter} className="form-control" />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>Gravatar URL</label>
                         <input onChange={this.props.onChange} type="text" name="avatarUrl" value={this.props.formValues.avatarUrl} className="form-control" />
-                    </div>
-                    <button type="button" onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    </div> */}
+                    <button type="submit" onClick={this.handleClick} className="btn btn-primary">Save</button>
                 </form>
             </div>
         )
