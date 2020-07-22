@@ -3,6 +3,8 @@ import React from 'react'
 import './styles/Badge.css'
 import logo from '../images/badge-header.svg'
 
+import Gravatar from './Gravatar'
+
 class Badge extends React.Component {
 
     render() {
@@ -14,8 +16,8 @@ class Badge extends React.Component {
 
                 <div className='Badge__section-name'>
                     {
-                        this.props.avatarUrl
-                            ? <img className='Badge__avatar' src={this.props.avatarUrl} alt={this.props.twitter} />
+                        this.props.email
+                            ? <Gravatar className='Badge__avatar' email={this.props.email} /> 
                             : (
                                 <div className='Badge__profile_placeholder'>
                                     <p>Profile_Picture</p>
