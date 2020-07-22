@@ -5,6 +5,8 @@ import header from '../images/badge-header.svg'
 
 import './styles/Badges.css'
 import BadgesList from '../components/BadgesList'
+import PageLoading from '../components/PageLoading'
+import PageError from '../components/PageError'
 
 import api from '../api'
 
@@ -58,12 +60,26 @@ class Badges extends React.Component {
     render() {
         console.log('2. render()')
 
-        if (this.state.loading) {
-            return 'Loading...'
-        }
+        let badgeContainer = <PageLoading />
 
-        if (this.state.error) {
-            return `Error: ${this.state.error.message}`
+        if (!this.state.loading) {
+            if (this.state.error) {
+                // return `Error: ${this.state.error.message}`
+                badgeContainer = <PageError error={this.state.error} />
+            } else {
+                badgeContainer = (
+                    <div className="Badges__container">
+                        <div className="Badges__buttons">
+                            <Link to="/badges/new" className='btn btn-primary'>
+                                New Badge
+                            </Link>
+                        </div>
+                        <div className="Badges__list">
+                            <BadgesList badges={this.state.data} />
+                        </div>
+                    </div>
+                )
+            }
         }
 
         return (
@@ -86,18 +102,7 @@ class Badges extends React.Component {
                     </div>
                 </div>
 
-                <div className="Badges__container">
-                    <div className="Badges__buttons">
-                        <Link to="/badges/new" className='btn btn-primary'>
-                            New Badge
-                        </Link>
-                    </div>
-
-                    <div className="Badges__list">
-                        <BadgesList badges={this.state.data} />
-                    </div>
-
-                </div>
+                {badgeContainer}
             </React.Fragment>
         )
     }
