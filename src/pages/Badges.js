@@ -25,6 +25,8 @@ class Badges extends React.Component {
     componentDidMount() {
         console.log('3. componentDidMount()')
         this.fetchData()
+
+        this.intervalId = setInterval(this.fetchData, 5000)
     }
 
     fetchData = async () => {
@@ -54,32 +56,35 @@ class Badges extends React.Component {
     componentWillUnmount() {
         console.log('6. componentWillUnmount()')
         clearTimeout(this.timeoutId)
+        clearInterval(this.intervalId)
     }
 
 
     render() {
         console.log('2. render()')
 
-        let badgeContainer = <PageLoading />
+        let badgeContainer = null
 
-        if (!this.state.loading) {
-            if (this.state.error) {
-                // return `Error: ${this.state.error.message}`
-                badgeContainer = <PageError error={this.state.error} />
-            } else {
-                badgeContainer = (
-                    <div className="Badges__container">
-                        <div className="Badges__buttons">
-                            <Link to="/badges/new" className='btn btn-primary'>
-                                New Badge
-                            </Link>
-                        </div>
-                        <div className="Badges__list">
-                            <BadgesList badges={this.state.data} />
-                        </div>
+        if (this.state.loading && !this.state.data) {
+            badgeContainer = <PageLoading />
+        } else {
+            badgeContainer = (
+                <div className="Badges__container">
+                    <div className="Badges__buttons">
+                        <Link to="/badges/new" className='btn btn-primary'>
+                            New Badge
+                        </Link>
                     </div>
-                )
-            }
+                    <div className="Badges__list">
+                        <BadgesList badges={this.state.data} />
+                    </div>
+                </div>
+            )
+        }
+
+        if (this.state.error) {
+            // return `Error: ${this.state.error.message}`
+            badgeContainer = <PageError error={this.state.error} />
         }
 
         return (
