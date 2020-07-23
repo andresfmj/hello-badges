@@ -5,6 +5,7 @@ import "./styles/BadgeDetails.css"
 import confLogo from '../images/platziconf-logo.svg'
 
 import Badge from '../components/Badge'
+import DeleteBadgeModal from '../components/DeleteBadgeModal'
 
 
 function BadgeDetails(props) {
@@ -38,7 +39,8 @@ function BadgeDetails(props) {
                             <div><Link className='btn btn-primary mb-4' to={`/badges/${badge.id}/edit`}>Edit</Link></div>
                         </div>
                         <div>
-                            <button className='btn btn-danger'>Delete</button>
+                            <button onClick={props.toggleModal} className='btn btn-danger'>Delete</button>
+                            <DeleteBadgeModal isOpen={props.modalIsOpen} toggleModal={props.toggleModal} onDeleteBadge={props.onDeleteBadge} />
                         </div>
                     </div>
                 </div>
