@@ -6,7 +6,6 @@ import BadgeForm from '../components/BadgeForm'
 import Badge from '../components/Badge'
 
 import PageLoading from '../components/PageLoading'
-import PageError from '../components/PageError'
 
 import api from '../api'
 import md5 from 'md5'
@@ -68,6 +67,7 @@ class BadgeNew extends React.Component {
                             />
                         </div>
                         <div className="col-6">
+                            <h1>New Attendant</h1>
                             <BadgeForm onSubmit={this.handleSubmit} onChange={this.handleChange} formValues={this.state.form} error={this.state.error} />
                         </div>
                     </div>
