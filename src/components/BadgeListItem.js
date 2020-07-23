@@ -15,7 +15,7 @@ function BadgeListItem(props) {
                     <ul>
                         <li><span className='Twitter__logo'></span></li>
                         <li>
-                            <a href={`https://twitter.com/${props.badge.twitter}`}>@{props.badge.twitter}</a>
+                            <p>@{props.badge.twitter}</p>
                         </li>
                     </ul>
                 </div>

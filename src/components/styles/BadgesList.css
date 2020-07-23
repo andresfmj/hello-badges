@@ -45,3 +45,16 @@
   margin: 0;
   padding: 0;
 }
+
+
+.BadgesList__search {
+  width: 100% !important;
+}
+.BadgesList__search input {
+  box-sizing: border-box;
+}
+
+.BadgesList__hero form {
+  width: 100%;
+  justify-content: center;
+}
